@@ -1,4 +1,5 @@
 from hashlib import new
+from locale import currency
 
 
 class Node:
@@ -40,8 +41,6 @@ class BinaryTree:
                         curr_node = curr_node.right
                 else:
                     return
-
-    
     def dfs(self, val):
         '''
             dfs(val: any) -> value or bool:\n 
@@ -62,7 +61,6 @@ class BinaryTree:
                 else:
                     return curr_node
             return False
-
     def bfs(self, val):
         '''
             bfs(val: any) -> value or bool:\n
@@ -88,7 +86,6 @@ class BinaryTree:
                 if curr_node.right is not None:
                     queue.append(curr_node.right)
             return False
-
     # print out all the nodes
     def print(self, node=None):
         '''
@@ -106,6 +103,45 @@ class BinaryTree:
         if node.right:
             self.print(node.right)
 
+    def size(self):
+        '''
+            size() -> int:\n 
+            Calculate the number of nodes in the tree, starting from the root
+        '''
+        pass
+    def height(self):
+        '''
+            height() -> int:\n 
+            Calculate the maximum depth of nodes starting at the root
+        '''
+        pass
+    def get_max(self):
+        '''
+            get_max() -> int:\n 
+            perform depth first search
+            Calculate the maximum value held in the tree
+        '''
+        if not self.root:
+            return False
+        else:
+            curr_node = self.root
+            while curr_node.right:
+                curr_node = curr_node.right
+            return curr_node
+    def get_min(self):
+        '''
+            get_min() -> int:\n 
+            perform depth first search
+            Calculate the minimum value held in the tree
+        '''
+        if not self.root:
+            return False
+        else:
+            curr_node = self.root
+            while curr_node.left:
+                curr_node = curr_node.left
+            return curr_node
+
 my_tree = BinaryTree()
 my_tree.insert(15)
 my_tree.insert(10)
@@ -122,3 +158,6 @@ print(my_tree.dfs(2))
 print(my_tree.dfs(4))
 print(my_tree.bfs(6))
 print(my_tree.bfs(8))
+
+print(my_tree.get_max())
+print(my_tree.get_min())
